@@ -25,6 +25,7 @@ class Dev(Configuration):
     # SECURITY WARNING: keep the secret key used in production secret!
     SECRET_KEY = 'django-insecure-zaiqyyg8b%h58-f)dga!6sgs$tkk1qi*m_$gv=w=%_3)pdj@e@'
     OMDB_KEY = "cf60d428"
+    #OMDB_KEY = "abc123"
 
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True
@@ -50,7 +51,13 @@ class Dev(Configuration):
         'django.contrib.messages',
         'django.contrib.staticfiles',
         'movies',
+        'gh',
+        'django_celery_results',
     ]
+
+    CELERY_RESULT_BACKEND = "django-db"
+    CELERY_BROKER_URL = "redis://localhost:6379/0"
+
 
     MIDDLEWARE = [
         'django.middleware.security.SecurityMiddleware',
